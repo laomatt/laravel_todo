@@ -1,0 +1,16 @@
+.project-item {
+  background-color: #f2fffc;
+}
+
+.completed {
+  background-color: #efffe3;
+}
+
+.incomplete {
+  background-color: #ffe3e3;
+}
+
+.right-controls {
+  float: right;
+  margin-top: -5px;
+}
