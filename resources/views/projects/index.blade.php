@@ -11,7 +11,7 @@
                 <a href="{{ route('projects.show', $project->id) }}">{{ $project->name }}</a>
                 <div class="right-controls">
                   <a href="#" class="edit-proj btn btn-sm btn-primary">edit</a>
-                  <a href="#" class="delete-proj btn btn-sm btn-danger">delete</a>
+                  <a href="#" data-id='{{ $project->id }}' token='<?php echo csrf_token(); ?>' class="delete-proj btn btn-sm btn-danger">delete</a>
                 </div>
               </li>
           @endforeach

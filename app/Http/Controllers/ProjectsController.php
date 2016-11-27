@@ -24,6 +24,11 @@ class ProjectsController extends Controller
     return view('projects.show', compact('proj'));
   }
 
+  public function destroy($id){
+    $proj = Project::find($id);
+    $proj->delete();
+  }
+
   public function store(){
     $input = Input::all();
     Project::create( $input );

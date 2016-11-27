@@ -1,4 +1,5 @@
 <?php
+use App\Task;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +47,11 @@ Route::post('/reg/path', function($data){
 Route::resource('users','UserController');
 Route::resource('projects','ProjectsController');
 Route::resource('tasks','TasksController');
+
+Route::get('/tasks/show_edit/{id}', function($id){
+  $task = Task::find($id);
+  return view('tasks.show_edit', compact('task'));
+});
 
 Route::get('/cookie/set','CookieController@setCookie');
 Route::get('/cookie/get','CookieController@getCookie');

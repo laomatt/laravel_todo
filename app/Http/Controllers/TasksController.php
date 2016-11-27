@@ -21,10 +21,29 @@ class TasksController extends Controller
     return view('tasks.index', compact('tasks'));
   }
 
+  public function show_edit($id){
+    $task = Task::find($id);
+    return view('tasks.show_edit', compact('task'));
+  }
+
+  public function update($task){
+    $task = Task::find($task);
+    $input = Input::all();
+    $task->fill($input)->save();
+
+    return redirect()->back();
+  }
+
+  public function destroy($id){
+    $task = Task::find($id);
+    $task->delete();
+  }
+
   public function store(){
     $input = Input::all();
-    Task::create( $input );
-    // return Redirect::back();
+    $task = Task::create( $input );
+    $task->completed = 0;
+    $task->save;
     return redirect()->back();
   }
 }

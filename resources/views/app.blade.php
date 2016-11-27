@@ -43,3 +43,37 @@
 <div class="container">
   @yield('content')
 </div>
+
+<script>
+    $('body').on('click', '.delete-task', function(event) {
+        event.preventDefault();
+        var id = $(this).attr('data-id');
+        var token = $(this).attr('token');
+        var that = $(this);
+        $.ajax({
+            url: '/tasks/' + id,
+            type: 'delete',
+            data: {_token: token}
+        })
+        .done(function() {
+            that.parent().parent().hide('200', function() {
+            });
+        })
+    });
+    $('body').on('click', '.delete-proj', function(event) {
+        event.preventDefault();
+        var id = $(this).attr('data-id');
+        var token = $(this).attr('token');
+        var that = $(this);
+        $.ajax({
+            url: '/projects/' + id,
+            type: 'delete',
+            data: {_token: token}
+        })
+        .done(function() {
+            that.parent().parent().hide('200', function() {
+            });
+        })
+    });
+
+</script>
